@@ -368,8 +368,8 @@ main{ padding:32px; max-width:1300px; margin:0 auto; }
       <div class="upload-drop" id="dropZone">
         <input type="file" id="fileInput" accept="image/*" multiple onchange="handleFiles(this.files)">
         <div class="upload-icon">🖼️</div>
-        <div class="upload-text">PHOTOS YAHAN DROP KARO</div>
-        <div class="upload-sub">ya click karo to browse — JPG, PNG, WEBP support</div>
+        <div class="upload-text">DROP PHOTOS HERE</div>
+        <div class="upload-sub">or click to browse — JPG, PNG, WEBP supported</div>
       </div>
 
       <div class="preview-strip" id="previewStrip"></div>
@@ -431,7 +431,7 @@ main{ padding:32px; max-width:1300px; margin:0 auto; }
 //  CONFIG — AA BADLO
 // ─────────────────────────────────────────────
 const ADMIN_USER = 'markex';       // Username
-const ADMIN_PASS = 'admin@2025';   // Password — potanu rakho!
+const ADMIN_PASS = 'admin@2025';   // Password — change this to your own!
 const STORAGE_KEY = 'markex_gallery';
 
 // ─────────────────────────────────────────────
@@ -506,7 +506,7 @@ dropZone.addEventListener('drop', e => {
 //  UPLOAD
 // ─────────────────────────────────────────────
 function uploadPhotos() {
-  if (!pendingFiles.length) { showToast('Pehla photo select karo!', 'error'); return; }
+  if (!pendingFiles.length) { showToast('Please select a photo first!', 'error'); return; }
 
   const caption = document.getElementById('photoCaption').value.trim() || 'MARKEX Trading';
   const tag     = document.getElementById('photoTag').value;
@@ -571,7 +571,7 @@ function renderAdmin(filter) {
   const grid = document.getElementById('adminGrid');
 
   if (!filtered.length) {
-    grid.innerHTML = `<div class="empty-state">Aa category ma koi photo nathi.<br>Upar thi upload karo.</div>`;
+    grid.innerHTML = `<div class="empty-state">No photos in this category.<br>Upload from above.</div>`;
     return;
   }
 
@@ -598,7 +598,7 @@ function filterAdmin(filter, btn) {
 }
 
 function deletePhoto(id) {
-  if (!confirm('Aa photo delete karvu che?')) return;
+  if (!confirm('Are you sure you want to delete this photo?')) return;
   const photos = getPhotos().filter(p => p.id !== id);
   savePhotos(photos);
   renderAdmin(currentFilter);
@@ -607,7 +607,7 @@ function deletePhoto(id) {
 }
 
 function clearAll() {
-  if (!confirm('BADHA photos delete karva che? Aa undo nahi thay!')) return;
+  if (!confirm('Delete ALL photos? This cannot be undone!')) return;
   savePhotos([]);
   renderAdmin('all');
   updateStats();
