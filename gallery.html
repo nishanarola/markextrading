@@ -317,7 +317,7 @@ footer p{ font-family:'Space Mono',monospace; font-size:11px; opacity:0.4; }
 <div class="page-hero">
   <div class="page-label">PROOF OF WORK</div>
   <div class="page-title">TRADING <span>GALLERY</span></div>
-  <p class="page-desc">Real results. Real students. Real profits. Aa badhu j MARKEX Trading community na live results che.</p>
+  <p class="page-desc">Real results. Real students. Real profits. Everything you see here is from the MARKEX Trading community.</p>
 </div>
 
 <!-- GALLERY BODY -->
@@ -406,8 +406,8 @@ function renderGallery(filter) {
   if (!filteredPhotos.length) {
     grid.innerHTML = `<div class="gallery-empty">
       ${all.length === 0
-        ? '📂 Abhi koi photo nathi.<br>Admin panel thi photos upload karo.'
-        : '📂 Aa category ma koi photo nathi.'}
+        ? '📂 No photos yet.<br>Upload photos from the admin panel.'
+        : '📂 No photos in this category.'}
     </div>`;
     return;
   }
